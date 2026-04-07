@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/types.ts","./src/components/Header.tsx","./src/components/InputsPanel.tsx","./src/components/MethodologyPanel.tsx","./src/components/ResultsPanel.tsx","./src/data/evalData.ts","./src/utils/calculator.ts"],"version":"5.9.3"}
