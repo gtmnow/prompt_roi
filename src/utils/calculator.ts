@@ -10,7 +10,17 @@ export function calculateRoi(inputs: Inputs): CalculatorResult {
       throw new Error(`Missing task data for ${task.key}`);
     }
 
-    const selectedRate = winRow.values[inputs.profileKey] ?? 0;
+    const selectedRate = winRow.values[inputs.profileKey];
+    const selectedLatency = latencyRow.values[inputs.profileKey];
+
+    if (selectedRate == null) {
+      throw new Error(`Missing win-rate data for profile ${inputs.profileKey} on task ${task.key}`);
+    }
+
+    if (selectedLatency == null) {
+      throw new Error(`Missing latency data for profile ${inputs.profileKey} on task ${task.key}`);
+    }
+
     const bestRate = Math.max(...Object.values(winRow.values));
     const gap = Math.max(0, bestRate - selectedRate);
     const mix = inputs.taskMix[task.key] ?? defaultTaskMix[task.key];
@@ -24,15 +34,16 @@ export function calculateRoi(inputs: Inputs): CalculatorResult {
       gap,
       mix,
       weightedGap,
-      selectedLatency: latencyRow.values[inputs.profileKey] ?? 0,
+      selectedLatency,
       neutralLatency: latencyRow.neutral,
     };
   });
 
   const calculatedProductivityFactor = taskRows.reduce(
-    (sum, row) => sum + row.bestRate * row.mix,
+    (sum, row) => sum + row.weightedGap,
     0,
   );
+
   const weeklyHoursRecovered = inputs.weeklyLlmHours * calculatedProductivityFactor;
   const annualHoursRecovered = weeklyHoursRecovered * 52;
   const weeklyValueCreated = weeklyHoursRecovered * inputs.hourlyWage;

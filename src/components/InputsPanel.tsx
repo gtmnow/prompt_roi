@@ -1,5 +1,5 @@
 import { profiles, tasks } from '../data/evalData';
-import type { Inputs, TaskKey } from '../types';
+import type { Inputs, ProfileKey, TaskKey } from '../types';
 import { formatPercent } from '../utils/calculator';
 
 interface InputsPanelProps {
@@ -29,7 +29,7 @@ export function InputsPanel({
             <span>Persona profile</span>
             <select
               value={inputs.profileKey}
-              onChange={(event) => onInputChange('profileKey', event.target.value)}
+              onChange={(event) => onInputChange('profileKey', event.target.value as ProfileKey)}
             >
               {profiles.map((profile) => (
                 <option key={profile.key} value={profile.key}>

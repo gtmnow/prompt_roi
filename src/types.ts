@@ -7,6 +7,17 @@ export type TaskKey =
   | 'risk_analysis'
   | 'writing';
 
+export type ProfileKey =
+  | 'reformer'
+  | 'helper'
+  | 'achiever'
+  | 'individualist'
+  | 'investigator'
+  | 'loyalist'
+  | 'enthusiast'
+  | 'challenger'
+  | 'peacemaker';
+
 export interface TaskDefinition {
   key: TaskKey;
   label: string;
@@ -14,23 +25,23 @@ export interface TaskDefinition {
 }
 
 export interface Profile {
-  key: string;
+  key: ProfileKey;
   label: string;
 }
 
 export interface TaskWinRates {
   task: TaskKey;
-  values: Record<string, number>;
+  values: Record<ProfileKey, number>;
 }
 
 export interface LatencyEntry {
   task: TaskKey;
   neutral: number;
-  values: Record<string, number>;
+  values: Record<ProfileKey, number>;
 }
 
 export interface Inputs {
-  profileKey: string;
+  profileKey: ProfileKey;
   weeklyLlmHours: number;
   hourlyWage: number;
   taskMix: Record<TaskKey, number>;

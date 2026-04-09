@@ -1,4 +1,10 @@
-import type { LatencyEntry, Profile, TaskDefinition, TaskKey, TaskWinRates } from '../types';
+import type {
+  LatencyEntry,
+  Profile,
+  TaskDefinition,
+  TaskKey,
+  TaskWinRates,
+} from '../types';
 
 export const profiles: Profile[] = [
   { key: 'reformer', label: 'Reformer' },
