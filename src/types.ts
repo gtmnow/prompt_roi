@@ -43,7 +43,7 @@ export interface LatencyEntry {
 export interface Inputs {
   profileKey: ProfileKey;
   weeklyLlmHours: number;
-  hourlyWage: number;
+  annualSalary: number;
   taskMix: Record<TaskKey, number>;
 }
 

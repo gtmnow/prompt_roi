@@ -9,7 +9,7 @@ import { calculateRoi } from './utils/calculator';
 const initialInputs: Inputs = {
   profileKey: 'peacemaker',
   weeklyLlmHours: 4,
-  hourlyWage: 35,
+  annualSalary: 156000,
   taskMix: { ...defaultTaskMix },
 };
 

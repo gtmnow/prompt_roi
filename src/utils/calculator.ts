@@ -46,7 +46,8 @@ export function calculateRoi(inputs: Inputs): CalculatorResult {
 
   const weeklyHoursRecovered = inputs.weeklyLlmHours * calculatedProductivityFactor;
   const annualHoursRecovered = weeklyHoursRecovered * 52;
-  const weeklyValueCreated = weeklyHoursRecovered * inputs.hourlyWage;
+  const hourlyRate = inputs.annualSalary / 2080;
+  const weeklyValueCreated = weeklyHoursRecovered * hourlyRate;
   const annualValueCreated = weeklyValueCreated * 52;
   const mixTotal = taskRows.reduce((sum, row) => sum + row.mix, 0);
   const isMixValid = Math.abs(mixTotal - 1) < 0.00001;

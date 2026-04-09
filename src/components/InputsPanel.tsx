@@ -51,16 +51,28 @@ export function InputsPanel({
           </label>
 
           <label>
-            <span>Hourly wage (dollars)</span>
+            <span>Fully burdened annual salary (dollars)</span>
             <div className="currency-input-wrap">
               <span className="currency-prefix">$</span>
               <input
                 className="currency-input"
-                type="number"
-                min="0"
-                step="1"
-                value={inputs.hourlyWage}
-                onChange={(event) => onInputChange('hourlyWage', Number(event.target.value))}
+                type="text"
+                inputMode="numeric"
+                value={formatSalaryInput(inputs.annualSalary)}
+                onChange={(event) => {
+                  const raw = event.target.value.replace(/,/g, '').trim();
+
+                  if (raw === '') {
+                    onInputChange('annualSalary', 0);
+                    return;
+                  }
+
+                  if (!/^\d+$/.test(raw)) {
+                    return;
+                  }
+
+                  onInputChange('annualSalary', Number(raw));
+                }}
               />
             </div>
           </label>
@@ -133,4 +145,10 @@ export function InputsPanel({
       </div>
     </section>
   );
+}
+
+function formatSalaryInput(value: number): string {
+  return new Intl.NumberFormat('en-US', {
+    maximumFractionDigits: 0,
+  }).format(value || 0);
 }
