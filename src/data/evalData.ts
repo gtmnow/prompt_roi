@@ -7,15 +7,15 @@ import type {
 } from '../types';
 
 export const profiles: Profile[] = [
-  { key: 'reformer', label: 'Reformer' },
-  { key: 'helper', label: 'Helper' },
-  { key: 'achiever', label: 'Achiever' },
-  { key: 'individualist', label: 'Individualist' },
-  { key: 'investigator', label: 'Investigator' },
-  { key: 'loyalist', label: 'Loyalist' },
-  { key: 'enthusiast', label: 'Enthusiast' },
-  { key: 'challenger', label: 'Challenger' },
-  { key: 'peacemaker', label: 'Peacemaker' },
+  { key: 'reformer', label: 'Type 1' },
+  { key: 'helper', label: 'Type 2' },
+  { key: 'achiever', label: 'Type 3' },
+  { key: 'individualist', label: 'Type 4' },
+  { key: 'investigator', label: 'Type 5' },
+  { key: 'loyalist', label: 'Type 6' },
+  { key: 'enthusiast', label: 'Type 7' },
+  { key: 'challenger', label: 'Type 8' },
+  { key: 'peacemaker', label: 'Type 9' },
 ];
 
 export const tasks: TaskDefinition[] = [
